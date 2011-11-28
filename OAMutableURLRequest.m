@@ -46,7 +46,7 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 {
     if (self = [super initWithURL:aUrl
 					  cachePolicy:NSURLRequestReloadIgnoringCacheData
-				  timeoutInterval:10.0])
+				  timeoutInterval:60.0])
 	{    
 		consumer = [aConsumer retain];
 		
@@ -120,23 +120,11 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 	[signatureProvider release];
 	[timestamp release];
 	[nonce release];
-	[extraOAuthParameters release];
 	[super dealloc];
 }
 
 #pragma mark -
 #pragma mark Public
-
-- (void)setOAuthParameterName:(NSString*)parameterName withValue:(NSString*)parameterValue
-{
-	assert(parameterName && parameterValue);
-	
-	if (extraOAuthParameters == nil) {
-		extraOAuthParameters = [NSMutableDictionary new];
-	}
-	
-	[extraOAuthParameters setObject:parameterValue forKey:parameterName];
-}
 
 - (void)prepare 
 {
@@ -152,19 +140,20 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
     NSString *oauthToken;
     if ([token.key isEqualToString:@""])
         oauthToken = @""; // not used on Request Token transactions
-    else
+    else if (!token.verifier || [token.verifier isEqualToString:@""])
         oauthToken = [NSString stringWithFormat:@"oauth_token=\"%@\", ", [token.key URLEncodedString]];
+	else
+		oauthToken = [NSString stringWithFormat:@"oauth_token=\"%@\", oauth_verifier=\"%@\", ", 
+					  [token.key URLEncodedString],
+					  [token.verifier URLEncodedString]];
 	
-	NSMutableString *extraParameters = [NSMutableString string];
+	NSString *callbackURL = @"";
+	if ([token.key isEqualToString:@""]
+		&& consumer.callbackURL
+		&& ![consumer.callbackURL isEqualToString:@""]) {
+		callbackURL = [NSString stringWithFormat:@", oauth_callback=\"%@\"", consumer.callbackURL];
+	}
 	
-	// Adding the optional parameters in sorted order isn't required by the OAuth spec, but it makes it possible to hard-code expected values in the unit tests.
-	for(NSString *parameterName in [[extraOAuthParameters allKeys] sortedArrayUsingSelector:@selector(compare:)])
-	{
-		[extraParameters appendFormat:@", %@=\"%@\"",
-		 [parameterName URLEncodedString],
-		 [[extraOAuthParameters objectForKey:parameterName] URLEncodedString]];
-	}	
-    
     NSString *oauthHeader = [NSString stringWithFormat:@"OAuth realm=\"%@\", oauth_consumer_key=\"%@\", %@oauth_signature_method=\"%@\", oauth_signature=\"%@\", oauth_timestamp=\"%@\", oauth_nonce=\"%@\", oauth_version=\"1.0\"%@",
                              [realm URLEncodedString],
                              [consumer.key URLEncodedString],
@@ -173,7 +162,7 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
                              [signature URLEncodedString],
                              timestamp,
                              nonce,
-							 extraParameters];
+							 callbackURL];
 	
     [self setValue:oauthHeader forHTTPHeaderField:@"Authorization"];
 }
@@ -187,10 +176,12 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 }
 
 - (void)_generateNonce 
-{
+{		
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
-    NSMakeCollectable(theUUID);
+	CFRelease(theUUID);
+	if (nonce)
+		[nonce release];
     nonce = (NSString *)string;
 }
 
@@ -208,7 +199,16 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
     
     if (![token.key isEqualToString:@""]) {
         [parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_token" value:token.key] URLEncodedNameValuePair]];
+		if (![token.verifier isEqualToString:@""]) {
+			[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_verifier" value:token.verifier] URLEncodedNameValuePair]];
+		}
     }
+		
+	if ([token.key isEqualToString:@""]
+		&& consumer.callbackURL
+		&& ![consumer.callbackURL isEqualToString:@""]) {
+		[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_callback" value:consumer.callbackURL] URLEncodedNameValuePair]];
+	}
     
     for (OARequestParameter *param in [self parameters]) {
         [parameterPairs addObject:[param URLEncodedNameValuePair]];

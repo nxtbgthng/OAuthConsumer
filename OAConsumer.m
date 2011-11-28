@@ -27,16 +27,17 @@
 
 
 @implementation OAConsumer
-@synthesize key, secret;
+@synthesize key, secret, callbackURL;
 
 #pragma mark init
 
-- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret 
+- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret callbackURL:(NSString *)aCallbackURL
 {
 	if (self = [super init])
 	{
 		self.key = aKey;
 		self.secret = aSecret;
+		self.callbackURL = aCallbackURL;
 	}
 	return self;
 }
@@ -45,6 +46,7 @@
 {
 	[key release];
 	[secret release];
+	[callbackURL release];
 	[super dealloc];
 }
 

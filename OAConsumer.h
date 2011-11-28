@@ -31,10 +31,12 @@
 @protected
 	NSString *key;
 	NSString *secret;
+	NSString *callbackURL;
 }
 @property(retain) NSString *key;
 @property(retain) NSString *secret;
+@property(retain) NSString *callbackURL;
 
-- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret;
+- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret callbackURL:(NSString *)aCallbackURL;
 
 @end

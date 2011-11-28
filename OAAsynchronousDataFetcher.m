@@ -52,8 +52,10 @@
 	if (connection)
 		[connection release];
 	
-	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
+	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+	[connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+	[connection start];
+	
 	if (connection)
 	{
 		if (responseData)
@@ -75,11 +77,7 @@
 - (void)cancel
 {
 	if (connection)
-	{
 		[connection cancel];
-		[connection release];
-		connection = nil;
-	}
 }
 
 - (void)dealloc
@@ -92,7 +90,7 @@
 }
 
 #pragma mark -
-#pragma mark NSURLConnection methods
+#pragma mark NSURLConnection's delegate methods
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)aResponse
 {
@@ -132,3 +130,4 @@
 }
 
 @end
+
