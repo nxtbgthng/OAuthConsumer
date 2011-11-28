@@ -30,22 +30,24 @@
 
 - (NSString *)URLEncodedString 
 {
-    NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                                           (CFStringRef)self,
-                                                                           NULL,
-																		   CFSTR("!*'();:@&=+$,/?%#[]"),
-                                                                           kCFStringEncodingUTF8);
-    [result autorelease];
+    CFStringRef stringRef = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                    (CFStringRef)self,
+                                                                    NULL,
+                                                                    CFSTR("!*'();:@&=+$,/?%#[]"),
+                                                                    kCFStringEncodingUTF8);
+    NSString *result = [[(NSString *)stringRef retain] autorelease];
+    CFRelease(stringRef);
 	return result;
 }
 
 - (NSString*)URLDecodedString
 {
-	NSString *result = (NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
-																						   (CFStringRef)self,
-																						   CFSTR(""),
-																						   kCFStringEncodingUTF8);
-    [result autorelease];
+	CFStringRef stringRef = CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+                                                                                    (CFStringRef)self,
+                                                                                    CFSTR(""),
+                                                                                    kCFStringEncodingUTF8);
+    NSString *result = [[(NSString *)stringRef retain] autorelease];
+    CFRelease(stringRef);
 	return result;	
 }
 
