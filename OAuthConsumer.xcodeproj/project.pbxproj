@@ -48,6 +48,10 @@
 		82ABAFA91483F2050075033F /* OAAsynchronousDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DFA860F0EFCF7B200F849D3 /* OAAsynchronousDataFetcher.h */; };
 		82ABAFAA1483F2050075033F /* OAAsynchronousDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFA86100EFCF7B200F849D3 /* OAAsynchronousDataFetcher.m */; };
 		82ABAFAF1483F2920075033F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82ABAFAD1483F27A0075033F /* Security.framework */; };
+		82DDD5201484E92100F4B3F0 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FCAAF35F0CC9E73200C52F82 /* NSString+URLEncoding.m */; };
+		82DDD5211484E92100F4B3F0 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = FCAAF3CB0CCA69D600C52F82 /* NSMutableURLRequest+Parameters.m */; };
+		82DDD5221484E92100F4B3F0 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = FC98DF560CD19A7C00453F6C /* NSURL+Base.m */; };
+		82DDD5231484E92100F4B3F0 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 4571A8840DAC519C00E2A30E /* Base64Transcoder.c */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 		FC37EA3C0CDA42A00036EF8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
@@ -137,7 +141,7 @@
 		32DBCF5E0370ADEE00C91783 /* OAuthConsumer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer_Prefix.pch; sourceTree = "<group>"; };
 		4571A8840DAC519C00E2A30E /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
 		4571A8850DAC519C00E2A30E /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
-		82ABAF8A1483F1C50075033F /* liblibOAuthConsumer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibOAuthConsumer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		82ABAF8A1483F1C50075033F /* liblibOAuthConsumer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = liblibOAuthConsumer.a; path = libOAuthConsumer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		82ABAF8C1483F1C60075033F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		82ABAFAD1483F27A0075033F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -560,6 +564,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DDD5201484E92100F4B3F0 /* NSString+URLEncoding.m in Sources */,
+				82DDD5211484E92100F4B3F0 /* NSMutableURLRequest+Parameters.m in Sources */,
+				82DDD5221484E92100F4B3F0 /* NSURL+Base.m in Sources */,
+				82DDD5231484E92100F4B3F0 /* Base64Transcoder.c in Sources */,
 				82ABAF9A1483F2050075033F /* OAToken.m in Sources */,
 				82ABAF9C1483F2050075033F /* OAConsumer.m in Sources */,
 				82ABAF9E1483F2050075033F /* OAMutableURLRequest.m in Sources */,
