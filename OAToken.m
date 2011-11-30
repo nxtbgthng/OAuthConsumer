@@ -81,4 +81,21 @@
 	[super dealloc];
 }
 
+#pragma mark NSCoding
+
+- (id)initWithCoder:(NSCoder *)aDecoder;
+{
+    NSString *aKey = [aDecoder decodeObjectForKey:@"key"];
+    NSString *aSecret = [aDecoder decodeObjectForKey:@"secret"];
+    NSString *aVerifier = [aDecoder decodeObjectForKey:@"verifier"];
+    return [self initWithKey:aKey secret:aSecret verifier:aVerifier];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder;
+{
+    [aCoder encodeObject:self.key forKey:@"key"];
+    [aCoder encodeObject:self.secret forKey:@"secret"];
+    [aCoder encodeObject:self.verifier forKey:@"verifier"];
+}
+
 @end
