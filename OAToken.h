@@ -36,8 +36,6 @@
 @property(retain) NSString *verifier;
 
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret verifier:(NSString *)aVerifier;
-- (id)initWithUserDefaultsUsingServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
 - (id)initWithHTTPResponseBody:(NSString *)body;
-- (int)storeInUserDefaultsWithServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
 
 @end
