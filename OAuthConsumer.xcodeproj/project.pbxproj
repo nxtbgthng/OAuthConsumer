@@ -27,6 +27,7 @@
 		4571A88A0DAC519C00E2A30E /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 4571A8840DAC519C00E2A30E /* Base64Transcoder.c */; };
 		4571A88B0DAC519C00E2A30E /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4571A8850DAC519C00E2A30E /* Base64Transcoder.h */; };
 		4571A8B70DAC52D800E2A30E /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 4571A8840DAC519C00E2A30E /* Base64Transcoder.c */; };
+		823623E914864FFE00195CFC /* OAToken+iOSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 823623E714864BE400195CFC /* OAToken+iOSKeychain.m */; };
 		82ABAF8D1483F1C60075033F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82ABAF8C1483F1C60075033F /* Foundation.framework */; };
 		82ABAF981483F1F90075033F /* OAuthConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = FC53ABB20CD99348001B1B99 /* OAuthConsumer.h */; settings = {ATTRIBUTES = (); }; };
 		82ABAF991483F2050075033F /* OAToken.h in Headers */ = {isa = PBXBuildFile; fileRef = FCAAF07E0CC95E6A00C52F82 /* OAToken.h */; };
@@ -141,6 +142,8 @@
 		32DBCF5E0370ADEE00C91783 /* OAuthConsumer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer_Prefix.pch; sourceTree = "<group>"; };
 		4571A8840DAC519C00E2A30E /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
 		4571A8850DAC519C00E2A30E /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		823623E614864BE400195CFC /* OAToken+iOSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAToken+iOSKeychain.h"; sourceTree = "<group>"; };
+		823623E714864BE400195CFC /* OAToken+iOSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAToken+iOSKeychain.m"; sourceTree = "<group>"; };
 		82ABAF8A1483F1C50075033F /* libOAuthConsumer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOAuthConsumer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		82ABAF8C1483F1C60075033F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		82ABAFAD1483F27A0075033F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
@@ -281,6 +284,8 @@
 				FC53ABB20CD99348001B1B99 /* OAuthConsumer.h */,
 				FCAAF07E0CC95E6A00C52F82 /* OAToken.h */,
 				FCAAF07F0CC95E6A00C52F82 /* OAToken.m */,
+				823623E614864BE400195CFC /* OAToken+iOSKeychain.h */,
+				823623E714864BE400195CFC /* OAToken+iOSKeychain.m */,
 				FCAAF2120CC9846D00C52F82 /* OAConsumer.h */,
 				FCAAF2130CC9846D00C52F82 /* OAConsumer.m */,
 				FCAAF3C50CC9F5B500C52F82 /* OAMutableURLRequest.h */,
@@ -577,6 +582,7 @@
 				82ABAFA61483F2050075033F /* OAServiceTicket.m in Sources */,
 				82ABAFA81483F2050075033F /* OADataFetcher.m in Sources */,
 				82ABAFAA1483F2050075033F /* OAAsynchronousDataFetcher.m in Sources */,
+				823623E914864FFE00195CFC /* OAToken+iOSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
