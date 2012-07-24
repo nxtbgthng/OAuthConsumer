@@ -30,7 +30,7 @@
 	[result autorelease];
 	
 	if (status != noErr) {
-		NSAssert1(status == errSecItemNotFound, @"unexpected error while fetching token from keychain: %d", status);
+		NSAssert1(status == errSecItemNotFound, @"unexpected error while fetching token from keychain: %ld", status);
 		return nil;
 	}
 	
@@ -49,7 +49,7 @@
 						   nil];
 	[self removeFromDefaultKeychainWithServiceProviderName:provider];
 	OSStatus __attribute__((unused)) err = SecItemAdd((CFDictionaryRef)query, NULL);
-	NSAssert1(err == noErr, @"error while adding token to keychain: %d", err);
+	NSAssert1(err == noErr, @"error while adding token to keychain: %ld", err);
 }
 
 - (void)removeFromDefaultKeychainWithServiceProviderName:(NSString *)provider;
@@ -60,7 +60,7 @@
 						   serviceName, kSecAttrService,
 						   nil];
 	OSStatus __attribute__((unused)) err = SecItemDelete((CFDictionaryRef)query);
-	NSAssert1((err == noErr || err == errSecItemNotFound), @"error while deleting token from keychain: %d", err);
+	NSAssert1((err == noErr || err == errSecItemNotFound), @"error while deleting token from keychain: %ld", err);
 }
 
 @end
