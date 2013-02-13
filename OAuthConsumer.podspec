@@ -7,7 +7,14 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/nxtbgthng/OAuth2Client'
   s.author   = { 'nxtbgthng' => 'team@nxtbgthng.com'}
   s.source   = { :git => 'https://github.com/nxtbgthng/OAuthConsumer.git', :tag => "v#{s.version}" }
-  s.source_files = '*.{h,m}', 'Crypto/*.{h,c}'
+  s.source_files = ['NSMutableURLRequest+Parameters.{h,m}', 'OADataFetcher.{h,m}', 'OAServiceTicket.{h,m}', 'NSString+URLEncoding.{h,m}',
+                    'OAHMAC_SHA1SignatureProvider.{h,m}' ,'OASignatureProviding.{h,m}', 
+                    'OAToken+iOSKeychain.{h,m}', 'NSURL+Base.{h,m}' ,'OAMutableURLRequest.{h,m}' ,'OAToken.{h,m}',
+                    'OAAsynchronousDataFetcher.{h,m}' ,'OAPlaintextSignatureProvider.{h,m}' ,'OAuthConsumer.{h,m}',
+                    'OAConsumer.{h,m}' ,'OARequestParameter.{h,m}', 'Crypto/*.{h,c}']
   s.frameworks = 'Security'
   s.requires_arc = false
 end
+
+
+
